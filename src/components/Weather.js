@@ -1,9 +1,10 @@
 import React from "react";
+import Loader from "./Loader";
 import "./Weather.scss";
 
-const Weather = ({ isLoading }) => {
+const Weather = ({ isLoading = true }) => {
   if (isLoading) {
-    return <div>Loading...SPINNER</div>;
+    return <Loader />;
   }
 
   return (
