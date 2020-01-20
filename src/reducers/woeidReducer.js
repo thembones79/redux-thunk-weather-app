@@ -9,8 +9,6 @@ export default function woeidReducer(state = types.INITIAL_STATE, action) {
         error: null
       };
     case types.GET_WOEID_SUCCESS:
-      console.log({ reducerstate: state });
-      console.log({ reduceraction: action });
       return {
         ...state,
         isLoading: false,

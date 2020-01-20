@@ -6,11 +6,8 @@ import thunk from "redux-thunk";
 
 import App from "./components/App";
 import reducer from "./reducers";
-import { getWoeid } from "./actions";
 
 const store = createStore(reducer, applyMiddleware(thunk));
-//store.dispatch(getWoeid());
-console.log({ store });
 
 ReactDOM.render(
   <Provider store={store}>

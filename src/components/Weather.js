@@ -6,60 +6,68 @@ import { getWoeid, handleChange, getWeather } from "../actions";
 import "./Weather.scss";
 
 const Weather = props => {
-  console.log({ props1: props });
-  /*
-  if (props.isLoading) {
-    return <Loader />;
-  }
-  */
   if (props.error) {
     return <div>{props.error.message}</div>;
   }
 
-  const clickHandler = () => {
-    console.log({ props2: props });
-    props.getWoeid();
-    console.log({ props3: props });
+  const clickHandler = event => {
+    event.preventDefault();
+    props.getWeather();
   };
-  const handleChange2 = event => {
+  const changeHandler = event => {
     props.handleChange(event.target.value);
     props.getWoeid();
   };
 
   return (
     <div className="weather">
-      <div>
-        This is the weather app
-        <form>
-          <input
-            list="browsers"
-            name="browser"
-            onChange={handleChange2}
-            value={props.location}
-          />
-          <datalist id="browsers">
-            {props.woeid
-              ? props.woeid.map(item => (
-                  <option key={item.woeid} value={item.title} />
-                ))
-              : ""}
-          </datalist>
-          <input type="submit" />
-        </form>
-      </div>
+      <h2 className="weather__header">current weather</h2>
 
-      <button onClick={clickHandler}>woeid</button>
-      <button onClick={props.getWeather}>weather</button>
-      <ul></ul>
+      <form onSubmit={clickHandler} className="weather__form">
+        <input
+          list="locations"
+          name="location"
+          onChange={changeHandler}
+          value={props.location}
+          className="weather__input"
+        />
+        <datalist id="locations" className="weather__datalist">
+          {props.woeid
+            ? props.woeid.map(item => (
+                <option key={item.woeid} value={item.title} />
+              ))
+            : ""}
+        </datalist>
+        <input
+          type="submit"
+          value="get it"
+          className="weather__input--submit"
+        />
+      </form>
+
+      {props.isLoading ? <Loader /> : <div></div>}
+
+      {props.weather ? (
+        <div className="weather__state">
+          <img
+            className="weather__icon"
+            src={`https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[0].weather_state_abbr}.svg`}
+            alt={props.weather.consolidated_weather[0].weather_state_name}
+          />
+          <p className="weather__temperature">
+            {parseInt(props.weather.consolidated_weather[0].the_temp)}°
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
 
 const mapStateToProps = state => {
-  console.log({ state });
-  console.log(state);
   return {
-    isLoading: state.woeidReducer.isLoading,
+    isLoading: state.weatherReducer.isLoading,
     error: state.woeidReducer.error,
     woeid: state.woeidReducer.woeid,
     weather: state.weatherReducer.weather

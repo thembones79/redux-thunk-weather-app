@@ -9,8 +9,6 @@ export default function weatherReducer(state = types.INITIAL_STATE, action) {
         error: null
       };
     case types.GET_WEATHER_SUCCESS:
-      console.log({ reducerstate2: state });
-      console.log({ reduceraction2: action });
       return {
         ...state,
         isLoading: false,

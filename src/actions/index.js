@@ -9,8 +9,6 @@ export function getWoeid() {
     )
       .then(res => res.json())
       .then(json => {
-        console.log({ json });
-        console.log({ getState: getState() });
         dispatch({
           type: types.GET_WOEID_SUCCESS,
           woeid: json
@@ -31,8 +29,6 @@ export function getWeather() {
     )
       .then(res => res.json())
       .then(json => {
-        console.log({ json2: json });
-        console.log({ getState2: getState() });
         dispatch({
           type: types.GET_WEATHER_SUCCESS,
           weather: json

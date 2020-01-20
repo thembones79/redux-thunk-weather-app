@@ -1,5 +1,5 @@
 $primary-color: coral;
-$background-color: gray;
+$background-color: rgb(237, 242, 247);
 $accent-font: "Bebas Neue", cursive;
 $primary-font: "Lato", sans-serif;
 
@@ -74,7 +74,7 @@ td {
   font-weight: inherit;
   font-style: inherit;
   font-size: 100%;
-  font-family: inherit;
+  font-family: $primary-font;
   vertical-align: baseline;
 }
 /* remember to define focus styles! */
