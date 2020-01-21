@@ -12,11 +12,17 @@ const Weather = props => {
 
   const clickHandler = event => {
     event.preventDefault();
-    props.getWeather();
+    if (props.woeid) {
+      props.getWeather();
+    }
   };
   const changeHandler = event => {
+    console.log(event.target.value);
+    console.log({ props });
     props.handleChange(event.target.value);
-    props.getWoeid();
+    if (event.target.value !== "") {
+      props.getWoeid();
+    }
   };
 
   return (
@@ -74,7 +80,8 @@ const mapStateToProps = state => {
     isLoading: state.weatherReducer.isLoading,
     error: state.woeidReducer.error,
     woeid: state.woeidReducer.woeid,
-    weather: state.weatherReducer.weather
+    weather: state.weatherReducer.weather,
+    location: state.formChangeReducer.location
   };
 };
 

@@ -1,5 +1,5 @@
 export const INITIAL_STATE = {
-  location: null,
+  location: "",
   isLoading: false,
   error: null,
   woeid: null,
