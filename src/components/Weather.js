@@ -45,21 +45,25 @@ const Weather = props => {
         />
       </form>
 
-      {props.isLoading ? <Loader /> : <div></div>}
-
-      {props.weather ? (
-        <div className="weather__state">
-          <img
-            className="weather__icon"
-            src={`https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[0].weather_state_abbr}.svg`}
-            alt={props.weather.consolidated_weather[0].weather_state_name}
-          />
-          <p className="weather__temperature">
-            {parseInt(props.weather.consolidated_weather[0].the_temp)}°
-          </p>
-        </div>
+      {props.isLoading ? (
+        <Loader />
       ) : (
-        ""
+        <div>
+          {props.weather ? (
+            <div className="weather__state">
+              <img
+                className="weather__icon"
+                src={`https://www.metaweather.com/static/img/weather/${props.weather.consolidated_weather[0].weather_state_abbr}.svg`}
+                alt={props.weather.consolidated_weather[0].weather_state_name}
+              />
+              <p className="weather__temperature">
+                {parseInt(props.weather.consolidated_weather[0].the_temp)}°
+              </p>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       )}
     </div>
   );

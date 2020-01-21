@@ -4,9 +4,12 @@
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 85vw;
+
+  max-width: 480px;
+  max-height: 580px;
   box-shadow: 0 1.9px 1.6px rgba(0, 0, 0, 0.024),
     0 4.3px 3.6px rgba(0, 0, 0, 0.035), 0 7.6px 6.3px rgba(0, 0, 0, 0.043),
     0 12px 10px rgba(0, 0, 0, 0.05), 0 18.5px 15.5px rgba(0, 0, 0, 0.057),
@@ -24,20 +27,23 @@
 
 .weather__header {
   font-family: $accent-font;
-  font-size: 2em;
+  font-size: 2.5em;
   margin: 20px;
+  margin-top: 30px;
+  color: $accent-color;
 }
 
 .weather__icon {
-  width: 30vw;
-  height: 30vh;
-  margin: 20px;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
 }
 
 .weather__temperature {
-  font-size: 20vw;
-  font-weight: 200;
-  margin: 20px;
+  font-size: 6em;
+  font-weight: 100;
+  margin: 2px;
+  margin-bottom: 28px;
 }
 
 .weather__state {
@@ -47,6 +53,30 @@
   align-items: center;
 }
 
+.weather__input {
+  border: 1px solid $accent-color;
+  padding: 8px;
+  font-family: $primary-font;
+  font-size: 2em;
+  font-weight: 100;
+  border-radius: 6px;
+}
+
 .weather__input--submit {
-  margin: 40px;
+  font-family: $accent-font;
+  font-size: 1.6em;
+  padding: 8px;
+  padding-bottom: 4px;
+  width: 90px;
+  height: 60px;
+  background-color: $accent-color;
+  border: 0;
+  color: $primary-color;
+  margin: 20px;
+  margin-bottom: 30px;
+}
+
+.weather__datalist {
+  font-family: $primary-font;
+  font-weight: 100;
 }
